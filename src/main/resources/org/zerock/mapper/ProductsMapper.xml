@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="org.zerock.mapper.ProductsMapper">
+ 
+ 	<resultMap type="org.zerock.domain.ProductsVO" id="productsMap">
+ 		<id property="productsNo" column="productsNo" />
+ 		<result property="productsName" column="productsName" />
+ 		<result property="price" column="price" />
+ 		<result property="explain" column="explain" />
+ 		<result property="productsType" column="productsType" />
+ 		<result property="animalType" column="animalType" />
+ 		<result property="brand" column="brand" />
+ 		
+ 		<collection property="attachList" resultMap="attachMap" />
+ 	</resultMap>
+ 	
+ 	<resultMap type="org.zerock.domain.ProductsAttachVO" id="attachMap">
+ 		<id property="uuid" column="uuid" />
+ 		<result property="uploadPath" column="uploadPath" />
+ 		<result property="fileName" column="fileName" />
+ 		<result property="imageType" column="imageType" />
+ 		<result property="productsNo" column="productsNo" />
+ 	</resultMap>
+ 
+ 	<select id="getHomeList" resultMap="productsMap">
+ 		<![CDATA[
+ 			select 
+ 				p.productsNo, p.productsName, p.price, p.explain, p.animalType, p.productsType, p.brand,
+ 				a.uuid, a.uploadPath, a.fileName, a.imageType
+ 			from 
+ 				products p, products_attach a
+ 			where 
+ 				p.productsNo = a.productsNo
+ 				and
+ 				p.productsNo > 0
+ 		]]>
+ 	</select>
+ 	
+ 	<sql id="criteria">
+ 		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+ 			<choose>
+ 				<when test="type == 'a'.toString()">
+ 					animalType = #{keyword}
+ 				</when>
+ 				<when test="type == 'p'.toString()">
+ 					productsType = #{keyword}
+ 				</when>
+ 				<when test="type == 'b'.toString()">
+ 					brand = #{keyword}
+ 				</when>
+ 				<when test="type == 'search'.toString()">
+ 					productsName like '%'||#{keyword}||'%'
+ 				</when>
+ 			</choose>
+ 		</trim> 
+ 	</sql>
+ 
+ 	<select id="getListWithPaging" resultMap="productsMap">
+ 		<![CDATA[
+ 			select *
+ 			from
+ 				(
+ 				select /*+INDEX_DESC(products pk_products) */
+ 					rownum rn, p.productsNo, p.productsName, p.price, p.explain, p.animalType, p.productsType, p.brand,
+ 					a.uuid, a.uploadPath, a.fileName, a.imageType 
+ 				from products p, products_attach a
+ 				where 
+ 					p.productsNo = a.productsNo
+ 					and
+ 		]]>
+ 		
+ 		<include refid="criteria"></include>
+ 		
+ 		<![CDATA[
+ 			rownum <= #{pageNum} * #{amount}
+ 				)
+ 			where rn > (#{pageNum} -1) * #{amount}
+ 		]]>
+ 	</select>
+ 
+ 	<!--  
+ 	<insert id="addProducts">
+ 		insert into products (productsNo, categoryCode, productsName, price, explain, animalType, productsType, brand)
+ 		values (seq_products.nextval, #{categoryCode}, #{productsName}, #{price}, #{explain}, #{animalType}, #{productsType}, #{brand})
+ 	</insert>
+ 	-->
+ 	
+ 	<insert id="insertSelectKey">
+ 		<selectKey keyProperty="productsNo" order="BEFORE" resultType="long">
+ 			select seq_products.nextval from dual
+ 		</selectKey>
+ 		
+ 		insert into products (productsNo, productsName, price, explain, animalType, productsType, brand)
+ 		values (#{productsNo}, #{productsName}, #{price}, #{explain}, #{animalType}, #{productsType}, #{brand})
+ 	</insert>
+ 	
+  	<select id="getProducts" resultType="org.zerock.domain.ProductsVO">
+ 		<![CDATA[
+ 			select * from products where productsNo = #{productsNo}
+ 		]]>
+ 	</select>
+ 	
+ 	<delete id="deleteProducts">
+ 		delete products where productsNo = #{productsNo}
+ 	</delete>
+ 
+ 	<update id="updateProducts">
+ 		update products
+ 		set
+ 			productsName = #{productsName},
+ 			price = #{price},
+ 			explain = #{explain},
+ 			animalType = #{animalType}, 
+ 			productsType = #{productsType}, 
+ 			brand = #{brand}
+ 		where productsNo = #{productsNo}
+ 	</update>
+ 	
+ 	<select id="getTotalCount" resultType="int">
+ 		select count(*) from products 
+ 		where
+ 		
+ 		<include refid="criteria"></include>
+ 		 
+ 		productsNo > 0
+ 	</select>
+ </mapper>

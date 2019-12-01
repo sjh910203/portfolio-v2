@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security 
+		http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="customAccessDenied" class="org.zerock.security.CustomAccessDeniedHandler" />
+	
+	<bean id="bcryptPasswordEncoder" 
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+	
+	<bean id="customUserDetailsService" class="org.zerock.security.CustomUserDetailsService" />
+	
+	<bean id="userAuthProvider" class="org.zerock.security.CustomAuthenticationProvider" />
+	
+	<bean id="logoutSuccessHandler" class="org.zerock.security.CustomLogoutSuccessHandler" />
+	
+	<bean id="customLoginSuccessHandler" class="org.zerock.security.CustomLoginSuccessHandler" >
+		<property name="loginEmailName" value="inputEmail"></property>
+		<property name="defaultUrl" value="/"></property>
+	</bean>
+	
+	<bean id="customLoginFailureHandler" class="org.zerock.security.CustomLoginFailureHandler">
+		<property name="loginEmailName" value="inputEmail"></property>
+		<property name="loginPasswordName" value="inputPassword"></property>
+		<property name="errorMsg" value="ERRORMSG"></property>
+		<property name="defaultFailureUrl" value="/member/customLogin?error"></property>
+	</bean>
+	
+	<security:http auto-config="true" use-expressions="true">
+		
+		<security:access-denied-handler ref="customAccessDenied" />
+
+		<security:form-login 
+			username-parameter="inputEmail"
+			password-parameter="inputPassword"
+			login-processing-url="/login"
+			login-page="/member/customLogin"
+			authentication-success-handler-ref="customLoginSuccessHandler"
+			authentication-failure-handler-ref="customLoginFailureHandler"
+			 />
+
+		<security:logout 
+			logout-url="/member/customLogout" 
+			success-handler-ref="logoutSuccessHandler"
+			invalidate-session="true" 
+			delete-cookies="remember-me,JSESSION_ID"
+			/>
+		 
+		<security:remember-me 
+			data-source-ref="dataSource" 
+			token-validity-seconds="604800"
+			/>
+		
+	</security:http>
+
+	<security:authentication-manager>
+		
+		<security:authentication-provider ref="userAuthProvider" />
+		
+		<security:authentication-provider user-service-ref="customUserDetailsService">
+			
+			<security:password-encoder ref="bcryptPasswordEncoder" />
+			
+		</security:authentication-provider>
+		
+	</security:authentication-manager>
+</beans>

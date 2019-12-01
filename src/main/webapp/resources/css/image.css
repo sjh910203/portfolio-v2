@@ -1,0 +1,95 @@
+
+<style>
+.uploadResult {
+	width: 100%;
+	background-color: gray;
+}
+
+.uploadResult ul {
+	display: flex;
+	flex-flow: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.uploadResult ul li {
+	list-style: none;
+	padding: 10px;
+}
+
+.uploadResult ul li img {
+	width: 100px;
+}
+
+.uploadResult ul span {
+	display: inline-block;
+	width: 100px;
+	overflow: hidden; 
+	white-space: nowrap;
+	text-overflow: ellipsis; 
+}
+
+.view-product {
+	width: 100%;
+}
+
+.view-product ul {
+	display: flex;
+	flex-flow: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.view-product ul li {
+	list-style: none;
+	padding: 10px;
+}
+
+.view-product ul li img {
+	width: 100px;
+}
+
+.item {
+	width: 100%;
+}
+
+.item ul {
+	display: flex;
+	flex-flow: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.item ul li {
+	list-style: none;
+	padding: 10px;
+}
+
+.item ul li img {
+	width: 100px;
+}
+
+.bigPictureWrapper {
+  position: absolute;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  top:0%;
+  width:100%;
+  height:100%;
+  background-color: gray;
+  background-color: rgba( 255, 255, 255, 0.5 );
+  z-index: 100;
+}
+
+.bigPicture {
+  position: relative;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#animalType, #productsType, #brand {
+  width: auto;
+}
+</style>

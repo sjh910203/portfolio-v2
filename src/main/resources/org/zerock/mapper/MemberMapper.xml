@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="org.zerock.mapper.MemberMapper">
+ 
+ 	<resultMap type="org.zerock.domain.MemberVO" id="memberMap">
+ 		<id property="memberNo" column="memberno" />
+ 		<result property="memberNo" column="memberno" />
+ 		<result property="email" column="email" />
+ 		<result property="password" column="password" />
+ 		<result property="enabled" column="enabled" />
+		<result property="name" column="name" />
+ 		<result property="postCode" column="postcode" />
+ 		<result property="address" column="address" />
+ 		<result property="detailAddress" column="detailaddress" />
+ 		<result property="phoneNumber" column="phonenumber" />
+ 		<result property="regDate" column="regdate" />
+ 		<result property="updateDate" column="updatedate" />
+ 		<result property="authKey" column="authkey" />
+ 		<result property="failCounter" column="failCounter" />
+ 		<result property="pwChangeFlag" column="pwChangeFlag" />
+ 		
+		<collection property="authList" resultMap="authMap" /> 		
+ 	</resultMap>
+ 
+ 	<resultMap type="org.zerock.domain.MemberAuthVO" id="authMap">
+ 		<result property="memberNo" column="memberno" />
+ 		<result property="authority" column="authority" />
+ 	</resultMap>
+ 	
+ 	<select id="memberNoInfo" resultMap="memberMap">
+ 		select 
+ 			memberNo
+ 		from 
+ 			member
+ 		where
+ 			email = #{email}
+ 	</select>
+ 	
+ 	<select id="loginInfo" resultMap="memberMap">
+ 		select 
+ 			m.memberNo, m.email, m.password, m.enabled, 
+ 			a.authority
+ 		from 
+ 			member m, member_auth a
+ 		where
+ 			m.memberNo = a.memberNo
+ 		and
+ 			m.email = #{email}
+ 	
+ 	</select>
+
+ 	<select id="memberInfo" resultMap="memberMap">
+ 		<![CDATA[
+ 			select 
+ 				m.memberNo, m.email, m.enabled,
+ 				i.name, i.postCode, i.address, i.detailAddress, 
+ 				i.phoneNumber, i.regDate, i.updateDate,
+ 				a.authority
+ 			from
+ 				member m, member_info i, member_auth a
+ 			where
+ 				m.memberNo = i.memberNo
+ 			AND 
+ 				m.memberNo = a.memberNo
+ 			AND
+ 				m.email = #{email}
+ 		]]>
+ 	</select>
+ 	
+ 	<select id="emailCheck" parameterType="String" resultType="Integer">
+ 		select count(*) from member where email = #{email}
+ 	</select>
+
+	<insert id="join">
+		<selectKey keyProperty="memberNo" order="BEFORE" resultType="long">
+			select seq_member.nextval from dual
+		</selectKey>
+		
+		insert all 
+			into member (memberNo, email, password) values (#{memberNo}, #{email}, #{password})
+			into member_info (name, postCode, address, detailAddress, phoneNumber, memberNo) values (#{name}, #{postCode}, #{address}, #{detailAddress}, #{phoneNumber}, #{memberNo})
+			into member_auth values (#{memberNo}, 'ROLE_MEMBER')
+			into member_authKey (memberNo, authKey) values(#{memberNo}, #{authKey})
+			into member_flag (email, failCounter) values(#{email}, #{failCounter})
+		select * from dual
+	</insert>
+	
+	<select id="selectAuthKey" resultMap="memberMap">
+		select * from member_authKey where memberNo = #{memberNo} and authKey = #{authKey}
+	</select>
+	
+	<update id="updateEnabled">
+		update member
+		set enabled = #{enabled}
+		where memberNo = #{memberNo}
+	</update>
+
+	<update id="updateAuthKey">
+		update member_authKey
+		set authKey = #{authKey}
+		where memberNo = #{memberNo}
+	</update>
+	
+	<update id="updateFailCount">
+		<![CDATA[
+			update member_flag
+			set failCounter = failCounter + 1
+			where email = #{email}
+		]]>
+	</update>
+	
+	<update id="resetFailCount">
+		update member_flag
+		set failCounter = 0
+		where email = #{email}
+	</update>
+
+	<select id="checkFailCount" resultType="Integer">
+		select failCounter 
+		from member_flag
+		where email = #{email}
+	</select>
+	
+	<update id="updatePWChangeFlag">
+		<![CDATA[
+			update member_flag
+			set pwChangeFlag = #{pwChangeFlag}
+			where email = #{email}
+		]]>
+	</update>
+	
+	<select id="findFlag" resultType="Integer">
+		select count(*)
+		from member_flag 
+		where email = #{email} and pwChangeFlag = #{pwChangeFlag}
+	</select>
+	
+	<select id="findPW" resultMap="memberMap">
+		select m.memberNo, m.email, m.password, i.phoneNumber
+		from member m, member_info i
+		where m.email = #{email}
+		AND i.phoneNumber = #{phoneNumber}
+	</select>
+	
+	<update id="updateMemberPW">
+		update member
+		set password = #{password},
+			enabled = #{enabled}
+		where memberNo = #{memberNo} and email = #{email}
+	</update>
+	
+	<update id="updateDate">
+		update member_info 
+		set updateDate = #{updateDate}
+		where memberNo = #{memberNo}
+	</update>
+	
+	<update id="updateMemberInfo">
+		update member_info
+		set name = #{name},
+			postCode = #{postCode},
+			address = #{address},
+			detailAddress = #{detailAddress},
+			phoneNumber = #{phoneNumber}
+		where memberNo = #{memberNo}
+	</update>
+	
+	<delete id="deleteMemberFlag">
+		delete from member_flag where email = #{email}
+	</delete>
+	
+	<delete id="deleteMemberAuthKey">
+		delete from member_authKey where memberNo = #{memberNo}
+	</delete>
+	
+	<delete id="deleteMemberAuth">
+		delete from member_auth where memberNo = #{memberNo}
+	</delete>
+
+	<delete id="deleteMemberInfo">
+		delete from member_info where memberNo = #{memberNo}
+	</delete>
+
+	<delete id="deleteMember">
+		delete from member where memberNo = #{memberNo}
+	</delete>
+
+ </mapper>

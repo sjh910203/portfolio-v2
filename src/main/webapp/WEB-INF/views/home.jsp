@@ -113,7 +113,7 @@
 													장바구니에 넣기
 												</a>
 											</li>
-											<li><a class='move' href="/petshop/get?productsNo=<c:out value='${products.productsNo }' />" ><i class="fa fa-plus-square"></i>상세정보</a></li> <!-- 여기에 get 기능을 넣기 -->
+											<li><a class='move' href="/products/get?productsNo=<c:out value='${products.productsNo }' />" ><i class="fa fa-plus-square"></i>상세정보</a></li> <!-- 여기에 get 기능을 넣기 -->
 										</ul>
 									</div>
 								</div>

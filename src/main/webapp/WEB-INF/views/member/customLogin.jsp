@@ -18,6 +18,21 @@
 	position: relative;
 	margin: 5px 0px 5px 0px;
 }
+
+#login-btn {
+	position: relative;
+    margin: 10px 0px 10px 0px; 
+}
+    
+#kakaoLoginBtn {
+	position: relative;
+    margin: 10px 0px 10px 0px;    
+}
+
+#googleLoginBtn {
+	position: relative;
+    margin: 10px 0px 10px 0px;     
+}
 </style>
 
 <div class="login-form"><!--login form-->
@@ -52,7 +67,7 @@
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		<button type="submit" id="login-btn" class="btn btn-default">Login</button>
 
-		<a href="https://kauth.kakao.com/oauth/authorize?client_id=0b18208a4f09de8ada4c78b8e0941a84&redirect_uri=http://localhost:8080/OAuth/kakaoLogin&response_type=code">
+		<a href="https://kauth.kakao.com/oauth/authorize?client_id=0b18208a4f09de8ada4c78b8e0941a84&redirect_uri=http://localhost:8080/OAuth/kakaoLogin&response_type=code" id="kakaoLoginBtn">
 			<img id="kakao-btn" src="../../../resources/images/kakao_account_login_btn_medium_narrow.png">
 		</a>
 		

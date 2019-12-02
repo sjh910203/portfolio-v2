@@ -71,7 +71,7 @@ public class ReviewsConroller {
 		return new ResponseEntity<>(service.get(reviewsNo), HttpStatus.OK);
 	}
 	
-	@PreAuthorize("principal.username == #vo.reviewer")
+	@PreAuthorize("principal == #vo.reviewer")
 	@DeleteMapping(value = "/{reviewsNo}", produces = {MediaType.TEXT_PLAIN_VALUE} )
 	public ResponseEntity<String> remove(@RequestBody ReviewsVO vo, 
 			@PathVariable("reviewsNo") Long reviewsNo) {
@@ -85,7 +85,7 @@ public class ReviewsConroller {
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	@PreAuthorize("principal.username == #vo.reviewer")
+	@PreAuthorize("principal == #vo.reviewer")
 	@RequestMapping(method = {RequestMethod.PUT, RequestMethod.PATCH},
 			value = "/{reviewsNo}",
 			consumes = "application/json",

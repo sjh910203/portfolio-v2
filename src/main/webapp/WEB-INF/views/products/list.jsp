@@ -115,15 +115,14 @@
 	</section>
 	
 	<script type="text/javascript">
-	
-	var csrfHeaderName = "${_csrf.headerName}";
-    var csrfTokenValue = "${_csrf.token}";
-    
-    $(document).ajaxSend(function(e, xhr, options) {
-			xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
-		});
-
 	$(document).ready(function() {
+		
+		var csrfHeaderName = "${_csrf.headerName}";
+	    var csrfTokenValue = "${_csrf.token}";
+	    
+	    $(document).ajaxSend(function(e, xhr, options) {
+				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+			});
 
 		var result = '<c:out value="${result}"/>';
 		
@@ -188,6 +187,7 @@
 			$("#listAttach" + i).attr("src", imgSrci);
 		}
 		
+		// 장바구니 추가
 		$(".overlay-content").on("click", "a", function(e) {
 			e.preventDefault();
 

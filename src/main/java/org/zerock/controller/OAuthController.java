@@ -81,7 +81,10 @@ public class OAuthController {
 			
 			session.setAttribute("SPRING SECURITY CONTEXT", securityContext);
 			
-			return "home";	
+			model.addAttribute("msg", "카카오 계정으로 로그인 되었습니다");
+			model.addAttribute("url", "/");
+			
+			return "/OAuth/oAuthConfirm";
 		}
 	}
 
@@ -118,7 +121,10 @@ public class OAuthController {
 			
 			session.setAttribute("SPRING SECURITY CONTEXT", securityContext);
 			
-			return "home";
+			model.addAttribute("msg", "구글 계정으로 로그인 되었습니다");
+			model.addAttribute("url", "/");
+			
+			return "/OAuth/oAuthConfirm";
 		} else {
 			
 			model.addAttribute("profile", profile);

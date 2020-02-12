@@ -33,6 +33,12 @@
 		class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
 	</beans:bean>
 	
+	<interceptors> 
+		<beans:bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"> 
+			<beans:property name="paramName" value="lang" /> 
+		</beans:bean> 
+	</interceptors>
+
 	<security:global-method-security 
 		pre-post-annotations="enabled" secured-annotations="enabled"/>
 

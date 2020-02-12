@@ -87,13 +87,13 @@
 									<div class="single-products">
 										<div class="productinfo text-center">
 											<img src="#" id="listAttach${status.index}" style="width:266px;height:381px;">
-											<h2><c:out value="${products.price}" /></h2>
+											<h2 id="priceValue${status.index}"><c:out value="${products.price}" /></h2>
 											<p><c:out value="${products.productsName}" /></p>
 											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 										<div class="product-overlay">
 											<div class="overlay-content">
-												<h2><c:out value="${products.price}" /></h2>
+												<h2 id="olPriceValue${status.index}"><c:out value="${products.price}" /></h2>
 												<p><c:out value="${products.productsName}" /></p>
 												<a href="#" class="btn btn-default add-to-cart">
 													<i class="fa fa-shopping-cart">
@@ -215,6 +215,20 @@ $(document).ready(function() {
 		});
 	});
 	
+	function numberFormat(inputNumber) {
+		  return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+	
+	// priceValue
+  	for(var i = 0; i < $("#size").val(); i++) {
+  		console.log($("#priceValue" + i).html());
+  		$("#priceValue" + i).html(numberFormat($("#priceValue" + i).html()));
+  	}
+	
+  	for(var i = 0; i < $("#size").val(); i++) {
+  		console.log($("#olPriceValue" + i).html());
+  		$("#olPriceValue" + i).html(numberFormat($("#olPriceValue" + i).html()));
+  	}
 });
 
 </script>

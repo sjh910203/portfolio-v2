@@ -1,7 +1,5 @@
 package org.zerock.service;
 
-import java.util.HashMap;
-
 import org.zerock.domain.MemberVO;
 
 public interface MemberService {

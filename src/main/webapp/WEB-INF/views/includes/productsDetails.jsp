@@ -46,7 +46,7 @@
 					<td id="tableHead">상품명</td>
 					<td>${products.explain}</td>
 					<td id="tableHead">가격</td>
-					<td>${products.price}</td>
+					<td id="pdPrice">${products.price}</td>
 				</tr>
 				<tr>
 					<td id="tableHead">상품 설명</td>
@@ -149,7 +149,15 @@
 		
 		
 		console.log("reviews script");
-
+		
+		function numberFormat(inputNumber) {
+			  return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		}
+		
+		console.log($("#pdPrice").html);
+		
+		$("#pdPrice").html(numberFormat($("#pdPrice").html()));
+		
 		var productsNoValue = '<c:out value="${products.productsNo}" />';
 		var reviewsList = $(".reviewsList");
 

@@ -9,20 +9,17 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.zerock.domain.ProductsAttachVO;
 import org.zerock.mapper.ProductsAttachMapper;
 
-import lombok.Setter;
 import lombok.extern.log4j.Log4j;
-
+/*
 @Log4j
 @Component
 public class FileCheckTask {
 
-	@Setter(onMethod_ = { @Autowired })
 	private ProductsAttachMapper attachMapper;
 
 	private String getFolderYesterDay() {
@@ -48,20 +45,27 @@ public class FileCheckTask {
 
 		// ready for check file in directory with database file list
 		List<Path> fileListPaths = fileList.stream()
-				.map(vo -> Paths.get("C:\\upload", vo.getUploadPath(), vo.getUuid() + "_" + vo.getFileName()))
+				.map(vo -> Paths.get("/usr/local/apache-tomcat-9.0.29/webapps/upload/", vo.getUploadPath(), vo.getUuid() + "_" + vo.getFileName()))
 				.collect(Collectors.toList());
+		// "C:\\upload"
+		// "/usr/local/apache-tomcat-9.0.29/webapps/upload/"
 
 		// image file has thumnail file
 		fileList.stream().filter(vo -> vo.isImageType() == true)
-				.map(vo -> Paths.get("C:\\upload", vo.getUploadPath(), "s_" + vo.getUuid() + "_" + vo.getFileName()))
+				.map(vo -> Paths.get("/usr/local/apache-tomcat-9.0.29/webapps/upload/", vo.getUploadPath(), "s_" + vo.getUuid() + "_" + vo.getFileName()))
 				.forEach(p -> fileListPaths.add(p));
+		
+		// big thumnail
+		fileList.stream().filter(vo -> vo.isImageType() == true)
+		.map(vo -> Paths.get("/usr/local/apache-tomcat-9.0.29/webapps/upload/", vo.getUploadPath(), "bs_" + vo.getUuid() + "_" + vo.getFileName()))
+		.forEach(p -> fileListPaths.add(p));
 
 		log.warn("===========================================");
 
 		fileListPaths.forEach(p -> log.warn(p));
 
 		// files in yesterday directory
-		File targetDir = Paths.get("C:\\upload", getFolderYesterDay()).toFile();
+		File targetDir = Paths.get("/usr/local/apache-tomcat-9.0.29/webapps/upload/", getFolderYesterDay()).toFile();
 
 		File[] removeFiles = targetDir.listFiles(file -> fileListPaths.contains(file.toPath()) == false);
 
@@ -75,3 +79,4 @@ public class FileCheckTask {
 		}
 	}
 }
+*/

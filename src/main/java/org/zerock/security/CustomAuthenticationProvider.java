@@ -31,30 +31,30 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 		
 		CustomUser userInfo = (CustomUser) service.loadUserByUsername(authToken.getName());
 
-		log.warn("authenticate");
-		log.warn("email : " + authToken.getPrincipal() + " password : " + authToken.getCredentials());
+		log.info("authenticate");
+		log.info("email : " + authToken.getPrincipal() + " password : " + authToken.getCredentials());
 		
 		if(!pwe.matches((CharSequence) authToken.getCredentials(), userInfo.getPassword())) {
 
-			log.warn("password : " + authToken.getCredentials() + " user password : " + userInfo.getPassword() );
+			log.info("password : " + authToken.getCredentials() + " user password : " + userInfo.getPassword() );
 			
-			log.warn("not matched password");
+			log.info("not matched password");
 			
 			throw new BadCredentialsException((String) authToken.getPrincipal());
 		} else {
-			log.warn("password ok");
+			log.info("password ok");
 		}
 		
 		if(!userInfo.isEnabled() || !userInfo.isCredentialsNonExpired()) {
 
-			log.warn("account Verification " + userInfo.isEnabled());
+			log.info("account Verification " + userInfo.isEnabled());
 			
 			throw new DisabledException((String) authToken.getPrincipal());
 		} else {
-			log.warn("account Verification success");
+			log.info("account Verification success");
 		}
 		
-		log.warn("authenticate ok");
+		log.info("authenticate ok");
 		
 		return new UsernamePasswordAuthenticationToken(authToken.getPrincipal(), authToken.getCredentials(), userInfo.getAuthorities());
 	}

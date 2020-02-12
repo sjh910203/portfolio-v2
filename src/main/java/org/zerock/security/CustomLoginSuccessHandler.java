@@ -45,7 +45,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 			HttpServletResponse response, Authentication auth) 
 					throws IOException, ServletException {
 		
-		log.warn("Login Success");
+		log.info("Login Success");
 		
 		List<String> roleNames = new ArrayList<>();
 		
@@ -53,7 +53,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 			roleNames.add(authority.getAuthority());
 		});
 		
-		log.warn(request.getParameter(loginEmailName) + " ROLE NAMES : " + roleNames);
+		log.info(request.getParameter(loginEmailName) + " ROLE NAMES : " + roleNames);
 		
 		failCounterReset(request.getParameter(loginEmailName));
 		
@@ -87,7 +87,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 	
 	protected void failCounterReset(String email) {
 	
-		log.warn("Fail Counter Reset");
+		log.info("Fail Counter Reset");
 		
 		service.resetFailCount(email);
 		

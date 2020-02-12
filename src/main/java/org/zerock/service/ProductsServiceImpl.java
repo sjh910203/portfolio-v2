@@ -2,7 +2,6 @@ package org.zerock.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.zerock.domain.Criteria;
@@ -11,19 +10,19 @@ import org.zerock.domain.ProductsVO;
 import org.zerock.mapper.ProductsAttachMapper;
 import org.zerock.mapper.ProductsMapper;
 
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+
 import lombok.extern.log4j.Log4j;
 
 
 @Log4j
+@AllArgsConstructor
 @Service
 public class ProductsServiceImpl implements ProductsService {
 
-	@Setter(onMethod_ = @Autowired)
-	private ProductsMapper mapper;
+	private final ProductsMapper mapper;
 	
-	@Setter(onMethod_ = @Autowired)
-	private ProductsAttachMapper attachMapper;
+	private final ProductsAttachMapper attachMapper;
 	
 	@Override
 	public List<ProductsVO> getHomeList() {

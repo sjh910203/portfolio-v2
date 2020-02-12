@@ -4,28 +4,26 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.zerock.domain.CartVO;
 import org.zerock.domain.OrderLogVO;
-import org.zerock.domain.ProductsAttachVO;
 import org.zerock.mapper.PurchaseMapper;
 
-import lombok.Setter;
+import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 @Service
+@AllArgsConstructor
 @Log4j
 public class PurchaseServiceImpl implements PurchaseService {
 
-	@Setter(onMethod_ = @Autowired)
-	private PurchaseMapper mapper;
+	private final PurchaseMapper mapper;
 
 	@Override
 	public List<CartVO> goCart(Long mno) {
 		
-		log.warn("Cart Page for " + mno);
+		log.info("Cart Page for " + mno);
 
 		return mapper.goCart(mno);
 	}
@@ -33,7 +31,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 	@Override
 	public CartVO checkProductsInCart(CartVO vo) {
 
-		log.warn("check Products In Cart " + vo.getMno());
+		log.info("check Products In Cart " + vo.getMno());
 		
 		return mapper.checkProductsInCart(vo);
 	}
@@ -41,7 +39,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 	@Override
 	public int addCart(CartVO vo) {
 		
-		log.warn("add cart " + vo);
+		log.info("add cart " + vo);
 		
 		return mapper.addCart(vo);
 	}
@@ -49,7 +47,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 	@Override
 	public int updateCartItem(CartVO vo) {
 
-		log.warn("update Cart Item");
+		log.info("update Cart Item");
 		
 		return mapper.updateCartItem(vo);
 	}
@@ -57,7 +55,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 	@Override
 	public int deleteCartItem(Long cartNo) {
 
-		log.warn("delete Cart Item");
+		log.info("delete Cart Item");
 		
 		return mapper.deleteCartItem(cartNo);
 	}
@@ -66,7 +64,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 	@Transactional
 	public int insertOrderLog(List<OrderLogVO> vo) {
 		
-		log.warn("insert order log");
+		log.info("insert order log");
 
 		Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -79,16 +77,16 @@ public class PurchaseServiceImpl implements PurchaseService {
 			vo.get(i).setPayDate(payDate);
 		}
 		
-		log.warn(vo);
+		log.info(vo);
 		
 		int count = 0;
 		
 		for(int i = 0; i < vo.size(); i++) {
-			log.warn(vo.get(i));
+			log.info(vo.get(i));
 			count += mapper.insertOrderLog(vo.get(i));
 		}
 		
-		log.warn("count : " + count);
+		log.info("count : " + count);
 		
 		return count;
 	}
@@ -96,7 +94,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 	@Override
 	public List<OrderLogVO> orderLogInfo(Long mno) {
 		
-		log.warn("order log info " + mno);
+		log.info("order log info " + mno);
 		
 		return mapper.orderLogInfo(mno);
 	}
@@ -104,7 +102,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 	@Override
 	public int updateLog(OrderLogVO vo) {
 		
-		log.warn("update log " + vo.getMno());
+		log.info("update log " + vo.getMno());
 		
 		return mapper.updateLog(vo);
 	}
@@ -112,7 +110,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 	@Override
 	public int refundLog(OrderLogVO vo) {
 		
-		log.warn("refund log " + vo.getMno());
+		log.info("refund log " + vo.getMno());
 		
 		return mapper.refundLog(vo);
 	}

@@ -78,7 +78,7 @@ public class CustomLoginFailureHandler implements AuthenticationFailureHandler {
 			cnt = service.checkFailCount(email);
 		}
 
-		log.warn("fail count : " + cnt);
+		log.info("fail count : " + cnt);
 		
 		if(cnt == 3) {
 			MemberVO vo = service.loginInfo(email);

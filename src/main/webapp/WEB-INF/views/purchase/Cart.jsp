@@ -63,6 +63,11 @@
                            <input type="hidden" id="uploadPath${status.index}" value="${item.products.get(0).attachList.get(0).uploadPath}" />
                            <input type="hidden" id="fileName${status.index}" value="${item.products.get(0).attachList.get(0).fileName}" />
                        </c:forEach>
+                       <tr>
+                       	   <td class="pull-right">
+                       	   		<p>총 가격 : <p id="totalPrice"></p></p>
+                       	   </td>
+                       </tr>
 					</tbody>
 				</table>
 				 <div>
@@ -79,68 +84,9 @@
 
 	<section id="do_action">
 		<div class="container">
-			<div class="heading">
-				<h3>결제 방법 선택</h3>
-				<p>결제 방법을 선택해주세요</p>
-			</div>
 			<div class="row">
-				<div class="col-sm-6">
-					<div class="chose_area">
-                        <ul>
-                            <li>
-                                <ul>
-                                    <li>
-                                        <label>결제 방법</label>
-                                    </li>
-                                    <li>
-                                        <tr>
-                                            <td><!-- 하나만 선택되게 하기 -->
-                                                <input type="radio">
-                                                <label>신용카드</label>
-                                            </td>
-                                            <td>
-                                                <input type="radio">
-                                                <label>계좌이체</label>
-                                            </td>
-                                            <td>
-                                                <input type="radio">
-                                                <label>핸드폰 결제</label>
-                                            </td>
-                                        </tr>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <ul>
-                                    <li>
-                                        <label>배송 방법</label>
-                                    </li>
-                                    <li>
-                                        <tr>
-                                            <td><!-- 하나만 선택되게 하기 -->
-                                                <input type="radio">
-                                                <label>택배 배송</label>
-                                            </td>
-                                            <td>
-                                                <input type="radio">
-                                                <label>방문 수령</label>
-                                            </td>
-                                        </tr>
-                                    </li>
-                                </ul>
-                            </li>    
-                        </ul>
-					</div>
-				</div>
-				<div class="col-sm-6">
-					<div class="total_area">
-						<ul>
-							<li>상품 가격 <span id="totalPrice">${totalPrice}</span></li>
-							<li>배송비 <span></span></li>
-							<li>총 가격 <span></span></li>
-						</ul>
-							<a class="btn btn-default check_out" href="#" id="checkOut">결제하기</a>
-					</div>
+				<div class="pull-right">
+					<a class="btn btn-default check_out" href="#" id="checkOut">카카오페이 결제</a>
 				</div>
 			</div>
 		</div>
@@ -179,6 +125,10 @@ $(document).ready(function() {
 		$("#cartAttach" + i).attr("src", imgSrci);
 	}
 	
+	function numberFormat(inputNumber) {
+		  return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+
 	// 각 항목 합계 가격
 	for(var i = 0; i < $("#size").val(); i++) {
 		var price = $("#price" + i).html();
@@ -210,7 +160,28 @@ $(document).ready(function() {
 		});
 	});
 	
+	// price comma
+	for(var i = 0; i < $("#size").val(); i++) {
+		var price = $("#price" + i).html()
+		console.log(price);
+		$("#price" + i).html(numberFormat(price));
+	}
+	
+	// total price
+	var totalPrice = 0;
+	
+	for(var i = 0; i < $("#size").val(); i++) {
+		totalPrice += Number($("#amountPrice" + i).html());
+	}
+	
+	$("#totalPrice").html(numberFormat(totalPrice));
+	
 	console.log($("#totalPrice").html());
+	
+	//amount price comma
+	for(var i = 0; i < $("#size").val(); i++) {
+		$("#amountPrice" + i).html(numberFormat($("#amountPrice" + i).html()));
+	}
 	
 	var IMP = window.IMP;
 	IMP.init('imp85199466');
@@ -300,7 +271,7 @@ $(document).ready(function() {
 				}
 
 			alert(msg);
-			location.replace('/purchase/Cart'); // 성공 후 처리 필요
+			location.replace('/purchase/Cart'); 
 		});
 	});
 

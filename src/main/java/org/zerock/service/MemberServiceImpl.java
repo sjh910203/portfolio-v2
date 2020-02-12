@@ -1,17 +1,8 @@
 package org.zerock.service;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -22,33 +13,27 @@ import org.zerock.domain.TempKey;
 import org.zerock.mapper.MemberMapper;
 import org.zerock.mapper.PurchaseMapper;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import lombok.AllArgsConstructor;
 
-import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
+@AllArgsConstructor
 @Service
 public class MemberServiceImpl implements MemberService {
 
-	@Setter(onMethod_ = @Autowired)
-	private MemberMapper mapper;
+	private final MemberMapper mapper;
 	
-	@Setter(onMethod_ = @Autowired)
-	private PurchaseMapper pMapper;
+	private final PurchaseMapper pMapper;
 	
-	@Setter(onMethod_ = @Autowired)
-	private BCryptPasswordEncoder pwencoder;
-	
-	@Setter(onMethod_ = @Autowired)
-	private JavaMailSender mailSender;
+	private final BCryptPasswordEncoder pwencoder;
+
+	private final JavaMailSender mailSender;
 	
 	@Override
 	public int emailCheck(String email) {
 		
-		log.warn("Email Check");
+		log.info("Email Check");
 		
 		return mapper.emailCheck(email);
 	}	
@@ -56,7 +41,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberVO memberNoInfo(String email) {
 		
-		log.warn("find memberNo for " + email);
+		log.info("find memberNo for " + email);
 		
 		return mapper.memberNoInfo(email);
 	}
@@ -64,7 +49,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberVO loginInfo(String email) {
 		
-		log.warn("read login info");
+		log.info("read login info");
 		
 		return mapper.loginInfo(email);
 	}
@@ -72,7 +57,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberVO memberInfo(String email) {
 		
-		log.warn("read member info");
+		log.info("read member info");
 		
 		return mapper.memberInfo(email);
 	}
@@ -143,7 +128,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void resetFailCount(String email) {
 		
-		log.warn("reset Fail Counter for " + email);
+		log.info("reset Fail Counter for " + email);
 		
 		mapper.resetFailCount(email);
 	}
@@ -160,7 +145,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int updateMemberPW(MemberVO vo) {
 		
-		log.warn("update PW");
+		log.info("update PW");
 
 		String password = pwencoder.encode(vo.getPassword());
 		Date date = new Date();
@@ -181,7 +166,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int updateMemberInfo(MemberVO vo) {
 		
-		log.warn("update Member Info");
+		log.info("update Member Info");
 		
 		String password = pwencoder.encode(vo.getPassword());
 		Date date = new Date();
@@ -199,9 +184,9 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberVO findPW(MemberVO vo) throws Exception {
 		
-		log.warn("find PW");
+		log.info("find PW");
 		
-		log.warn(vo.getEmail() + " " + vo.getPhoneNumber());
+		log.info(vo.getEmail() + " " + vo.getPhoneNumber());
 		
 		MemberVO info = mapper.findPW(vo);
 		
@@ -212,7 +197,7 @@ public class MemberServiceImpl implements MemberService {
 		pwChangeFlag.setEmail(info.getEmail());
 		pwChangeFlag.setPwChangeFlag(authKey);
 		
-		log.warn(pwChangeFlag);
+		log.info(pwChangeFlag);
 		
 		mapper.updatePWChangeFlag(pwChangeFlag);
 		
@@ -248,7 +233,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int findFlag(MemberVO vo) {
 		
-		log.warn("find flag for " + vo.getEmail() + "& flag " + vo.getPwChangeFlag());
+		log.info("find flag for " + vo.getEmail() + "& flag " + vo.getPwChangeFlag());
 		
 		return mapper.findFlag(vo);
 	}
@@ -257,7 +242,7 @@ public class MemberServiceImpl implements MemberService {
 	@Transactional
 	public int withdrawalMember(MemberVO vo) {
 		
-		log.warn(vo.getEmail() + "   " + vo.getMemberNo());
+		log.info(vo.getEmail() + "   " + vo.getMemberNo());
 		
 		int count = 0;
 		
@@ -283,7 +268,7 @@ public class MemberServiceImpl implements MemberService {
 
 		int totalCount = count + count2;
 		
-		log.warn("withdrawal member " + totalCount);
+		log.info("withdrawal member " + totalCount);
 		
 		return totalCount;
 	}

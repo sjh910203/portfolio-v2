@@ -98,7 +98,7 @@
 										</td>
 										<td class="order_payPrice">
 											<div>
-												<p id="payPrice">${item.payPrice}</p>
+												<p id="payPrice${status.index}">${item.payPrice}</p>
 											</div>
 										</td>
 										<td class="order_payMethod">
@@ -167,6 +167,16 @@ $(document).ready(function() {
 		
 		$("#orderAttach" + i).attr("src", imgSrci);
 	}
+    
+    function numberFormat(inputNumber) {
+		  return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+    
+    //payPrice comma
+    for(var i = 0; i < $("#size").val(); i++) {
+    	console.log($("#payPrice" + i).html());
+    	$("#payPrice" + i).html(numberFormat($("#payPrice" + i).html()));
+    }
     
 	function displayTime(timeValue) {
 		

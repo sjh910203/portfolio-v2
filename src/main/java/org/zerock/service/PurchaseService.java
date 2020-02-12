@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.zerock.domain.CartVO;
 import org.zerock.domain.OrderLogVO;
-import org.zerock.domain.ProductsAttachVO;
 
 public interface PurchaseService {
 	

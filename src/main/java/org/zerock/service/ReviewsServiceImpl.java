@@ -2,22 +2,21 @@ package org.zerock.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.ReviewsPageDTO;
 import org.zerock.domain.ReviewsVO;
 import org.zerock.mapper.ReviewsMapper;
 
-import lombok.Setter;
+import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 @Service
+@AllArgsConstructor
 @Log4j
 public class ReviewsServiceImpl implements ReviewsService{
 	
-	@Setter(onMethod_ = @Autowired)
-	private ReviewsMapper mapper;
+	private final ReviewsMapper mapper;
 
 	@Override
 	public int register(ReviewsVO vo) {

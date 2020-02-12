@@ -21,17 +21,17 @@ public class CustomUserDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String email) 
 			throws UsernameNotFoundException {
 		
-		log.warn("Load User By Email : " + email);
+		log.info("Load User By Email : " + email);
 		
 		MemberVO vo = mapper.loginInfo(email);
 		
-		log.warn(vo);
+		log.info(vo);
 		
 		if(vo == null){
 			throw new UsernameNotFoundException(email);
 		}
 		
-		log.warn("queried by member mapper : " + vo);
+		log.info("queried by member mapper : " + vo);
 		
 		CustomUser customUser = new CustomUser(vo);
 		

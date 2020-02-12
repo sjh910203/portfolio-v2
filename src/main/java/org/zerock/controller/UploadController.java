@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import org.apache.tika.Tika;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -47,8 +48,18 @@ public class UploadController {
 	}
 	
 	private boolean checkImageType(File file) {
+		
+		log.info("check Image Type");
+		
 		try {
-			String contentType = Files.probeContentType(file.toPath());
+			
+			log.info("check Image Type Function " + file);
+			
+			//String contentType = Files.probeContentType(file.toPath());
+			
+			String contentType = new Tika().detect(file);
+			
+			log.info(contentType);
 			
 			return contentType.startsWith("image");
 		} catch(IOException e) {
@@ -68,7 +79,9 @@ public class UploadController {
 		
 		List<ProductsAttachVO> attachList = new ArrayList<>();
 		
-		String uploadFolder = "C:\\upload";
+		String uploadFolder = "/usr/local/apache-tomcat-9.0.29/webapps/upload/";
+		// "C:\\upload"
+		// "/usr/local/apache-tomcat-9.0.29/webapps/upload"
 		
 		String uploadFolderPath = getFolder();
 		// 폴더 생성
@@ -101,6 +114,9 @@ public class UploadController {
 			
 			try {
 				File saveFile = new File(uploadPath, uploadFileName);
+				
+				log.info(saveFile);
+				
 				multipartFile.transferTo(saveFile);
 				
 				attachVO.setUuid(uuid.toString());
@@ -108,6 +124,8 @@ public class UploadController {
 				
 				// 파일 타입 체크
 				if(checkImageType(saveFile)) {
+					
+					log.info("check Image Type " + saveFile);
 					
 					attachVO.setImageType(true);
 					
@@ -146,7 +164,9 @@ public class UploadController {
 		
 		log.info("fileName : " + fileName);
 		
-		File file = new File("c:\\upload\\" + fileName);
+		File file = new File("/usr/local/apache-tomcat-9.0.29/webapps/upload/" + fileName);
+		// "c:\\upload\\"
+		// "/usr/local/apache-tomcat-9.0.29/webapps/upload"
 		
 		log.info("file : " + file);
 		
@@ -170,7 +190,9 @@ public class UploadController {
 	@ResponseBody
 	public ResponseEntity<Resource> downloadFile(@RequestHeader("User-Agent") String userAgent, String fileName) {
 		
-		Resource resource = new FileSystemResource("c:\\upload\\" + fileName);
+		Resource resource = new FileSystemResource("/usr/local/apache-tomcat-9.0.29/webapps/upload/" + fileName);
+		// "c:\\upload\\"
+		// "/usr/local/apache-tomcat-9.0.29/webapps/upload"
 		
 		if(resource.exists() == false) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -226,7 +248,9 @@ public class UploadController {
 		
 		try {
 			
-			file = new File("c:\\upload\\" + URLDecoder.decode(fileName, "UTF-8"));
+			file = new File("/usr/local/apache-tomcat-9.0.29/webapps/upload/" + URLDecoder.decode(fileName, "UTF-8"));
+			// "c:\\upload\\"
+			// "/usr/local/apache-tomcat-9.0.29/webapps/upload"
 			
 			file.delete();
 			

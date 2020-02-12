@@ -16,7 +16,8 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
-		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:orcl"></property>
+		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@10.174.0.7:1521:XE"></property>
+		<!-- "jdbc:log4jdbc:oracle:thin:@10.174.0.5:1521:XE" -->
 		<property name="username" value="PETSHOP"></property>
 		<property name="password" value="PETSHOP"></property>
 	</bean>
@@ -59,9 +60,9 @@
 	<context:component-scan base-package="org.zerock.service" />
 	
 	<context:component-scan base-package="org.zerock.aop" />
-	
+	 
 	<context:component-scan base-package="org.zerock.task" />
-	
+	 
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	
 	<task:annotation-driven />
@@ -76,7 +77,7 @@
 	</bean>
 	
 	<bean id="googleRedirectUrl" class="java.lang.String">
-	        <constructor-arg value="http://localhost:8080/OAuth/googleLogin" />
+	        <constructor-arg value="http://www.petshopsjh910203.site/OAuth/googleLogin" />
 	</bean>
 	    
 	<bean id="googleSns" class="org.zerock.oauth.SNS">

@@ -4,7 +4,6 @@ import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -40,7 +39,6 @@ public class OAuthController {
 
 	private MemberService memberService;
 	
-	@Autowired
 	private SNS googleSns;
 	
 	@RequestMapping(value = "/kakaoLogin")

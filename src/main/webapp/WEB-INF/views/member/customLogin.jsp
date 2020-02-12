@@ -67,13 +67,11 @@
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		<button type="submit" id="login-btn" class="btn btn-default">Login</button>
 
+		<!-- 
 		<a href="https://kauth.kakao.com/oauth/authorize?client_id=0b18208a4f09de8ada4c78b8e0941a84&redirect_uri=http://localhost:8080/OAuth/kakaoLogin&response_type=code" id="kakaoLoginBtn">
 			<img id="kakao-btn" src="../../../resources/images/kakao_account_login_btn_medium_narrow.png">
 		</a>
-		
-		<!-- https://accounts.google.com/o/oauth2/v2/auth?scope=openid https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile&access_type=offline&include_granted_scopes=true&state=state_parameter_passthrough_value&redirect_uri=http://localhost:8080/OAuth/GetOAuth&response_type=code&client_id=133840120964-cdtdfe563i3q954pl9bebhhcr697gibc.apps.googleusercontent.com -->
-		<!-- https://accounts.google.com/o/oauth2/auth?client_id=133840120964-cdtdfe563i3q954pl9bebhhcr697gibc.apps.googleusercontent.com&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.login&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fmember%2FgetOAuthGoogle -->
-		
+		 -->
 		<a href="${google_url}" id="googleLoginBtn">
 			<img src="../../resources/images/btn_google_signin_dark_focus_web.png">
 		</a>

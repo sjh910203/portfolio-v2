@@ -2,7 +2,6 @@ package org.zerock.controller;
 
 import java.security.Principal;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -34,10 +33,8 @@ public class MemberController {
 	
 	private MemberService service;
 	
-	@Autowired
 	private GoogleConnectionFactory gcf;
 	
-	@Autowired
 	private OAuth2Parameters oa2p;
 
 	@GetMapping("/customLogin")

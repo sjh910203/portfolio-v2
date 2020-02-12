@@ -34,7 +34,7 @@
                                 <h2><c:out value="${products.productsName}" /></h2>
                                 <p>Products NO : <c:out value="${products.productsNo}" /></p>
                                 <span>
-                                    <span><c:out value="${products.price}" /></span>
+                                    <span id="priceValue"><c:out value="${products.price}" /></span>
                                     <label>개수:</label>
                                     <input type="text" value="1" id="productsAmount">
                                     <button type="button" class="btn btn-fefault cart" id="addCart">
@@ -128,6 +128,16 @@
     			
     			operForm.submit();
     		});
+    		
+    		function numberFormat(inputNumber) {
+  			   return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  			}
+     		
+     		var inputNumber = $("#priceValue");
+  		
+ 	 		console.log("price value " + inputNumber.html());
+ 	 		
+ 	 		inputNumber.html(numberFormat(inputNumber.html()));
     		
     		// getAttachList
     		(function() {

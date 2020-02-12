@@ -115,24 +115,10 @@
                         <ul class="nav navbar-nav collapse navbar-collapse dropdown">
                             <li><a href="/" class="active">Home</a></li>
                             <sec:authorize access="isAnonymous()">
-                            		<li><a href="/products/list">상품<i class="fa fa-angle-down"></i></a>
-                            			<ul role="menu" class="sub-menu">
-                            				<li><a href="#">동물별 분류</a></li>
-                            				<li><a href="#">상품별 분류</a></li>
-                            				<li><a href="#">브랜드별 분류</a></li>
-                            			</ul>
-                            		</li>
+                            		<li><a href="/products/list">상품</i></a></li>
                             </sec:authorize>
                             <sec:authorize access="hasRole('ROLE_MEMBER')">
-                            		<li><a class="first-level" href="/products/list">상품<i class="fa fa-angle-down"></i></a>
-                            			<ul role="menu" class="sub-menu">
-                            				<li><a href="/products/list?type=a&keyword=개">개</a></li>
-			                            	<li><a href="/products/list?type=a&keyword=고양이">고양이</a></li>
-			                            	<li><a href="/products/list?type=a&keyword=파충류">파충류</a></li>
-			                            	<li><a href="/products/list?type=a&keyword=조류">조류</a></li>
-			                            	<li><a href="/products/list?type=a&keyword=기타">기타</a></li>
-                            			</ul>
-                            		</li>
+                            		<li><a href="/products/list">상품</i></a></li>
                             </sec:authorize>
                             <sec:authorize access="hasRole('ROLE_ADMIN')">
                             		<li class="dropdown"><a href="#">상품<i class="fa fa-angle-down"></i></a>
@@ -224,6 +210,7 @@
     			e.preventDefault();
     			$("#logoutForm").submit();
     		});
+    		
     	});
     </script>
     

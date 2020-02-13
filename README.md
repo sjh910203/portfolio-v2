@@ -1,7 +1,9 @@
 # Portfolio-v2
 
-링크 : http://www.petshopsjh910203.site/
+데모 : http://www.petshopsjh910203.site/
 * 구글 보안 문제 때문에 이메일을 사용하는 일반 회원 가입, 비밀번호 찾기는 사용할 수 없습니다.
+ERD : https://www.erdcloud.com/d/T967D3xb2NexTweXm
+
 1. 프로젝트 기간
 
 	* 전체 기간 4/16 ~ 11/26(총 8개월)
@@ -42,11 +44,7 @@
 	
 		Html, Java Script, JQuery, Jstl, Bootstrap
 
-3. 데이터 베이스 모델링
-
-	링크 : https://www.erdcloud.com/d/T967D3xb2NexTweXm
- 
-4. 구현 기능
+3. 구현 기능
 	* 게시판 CRUD
 	
 	* 상품평 CRUD
@@ -71,7 +69,7 @@
 	
 	* OAUTH 2.0 로그인
 	
-5. 앞으로의 예정
+4. 앞으로의 예정
 
 	* Google OAuth 2.0 cors 에러 해결
 
@@ -79,7 +77,7 @@
 
 	* 무료 도메인을 이용한 실제 서버 가동 - 2/10 완료
 	
-6. 프로젝트 중 발생한 문제점
+5. 프로젝트 중 발생한 문제점
 
 	* 멘토의 부재
 	

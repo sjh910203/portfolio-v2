@@ -1,5 +1,14 @@
 # Portfolio-v2
 
+1. 프로젝트 요약(프로젝트의 목적이나 참여인원, 내가 맡은 부분 등)
+
+2. 개발환경
+
+3. 주요기능(포트폴리오에서 강조하고 싶은 내용)
+
+4. Backend architecture
+
+
 데모 : http://www.petshopsjh910203.site/
 * 구글 보안 문제 때문에 이메일을 사용하는 일반 회원 가입, 비밀번호 찾기는 사용할 수 없습니다.
 ERD : https://www.erdcloud.com/d/T967D3xb2NexTweXm

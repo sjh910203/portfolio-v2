@@ -9,16 +9,18 @@
 	- 개발목표 :
 		1 
 		2 DBMS를 이용한 회원정보 관리.
-	본인역할 :  팀장. 전체적인 부분 통괄 및 백엔드 담당.
-	1) 자바를 이용하여 스프링 MVC모델을 구축.
-	2) Mysql과 자바를 JDBC(Java Database Connectivity) API를 통해 연결, 사용되는 Query문 구축.
 
+**2. 개발환경**
+	- 사용(개발) 언어: JAVA
+	- 사용 O/S     : Window10
+	- 사용 D/B     : 
+	- 사용(개발)  툴: ECLIPSE, Mysql Workbench, Brackets
+	- 웹 표준 기술  : HTML, CSS, JavaScript, jQuery
+	- 프레임워크   : Spring, MyBatis
 
-2. 개발환경
+**3. 주요기능(포트폴리오에서 강조하고 싶은 내용)**
 
-3. 주요기능(포트폴리오에서 강조하고 싶은 내용)
-
-4. Backend architecture
+**4. Backend architecture**
 
 
 데모 : http://www.petshopsjh910203.site/

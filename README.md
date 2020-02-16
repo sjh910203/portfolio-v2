@@ -29,6 +29,7 @@
 	3 ajax를 이용한 화면 전환 없는 상품평 추가 기능
 	4 Google SMTP를 이용한 회원가입 인증 
 	5 OAuth 2.0을 이용한 소셜 로그인 
+	6 Google Cloud Platform의 가상머신을 이용한 실제 서버 
 	
 **4. Backend architecture**
 

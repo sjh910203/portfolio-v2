@@ -27,7 +27,7 @@
 	- 사용(개발)  툴 : ECLIPSE, SQLDeveloper, Brackets
 	- 웹 표준 기술 : HTML, CSS, JavaScript, jQuery
 	- 프레임워크 : Spring Framework
-	- 참고 서적 - 뇌를 자극하는 Java 프로그래밍, 코드로 배우는 스프링 웹 프로젝트
+	- 참고 서적 : 뇌를 자극하는 Java 프로그래밍, 코드로 배우는 스프링 웹 프로젝트
 
 **3. 주요기능**
 

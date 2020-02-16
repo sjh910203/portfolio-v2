@@ -5,9 +5,7 @@
  	* 구글 보안 문제 때문에 이메일을 사용하는 일반 회원 가입, 비밀번호 찾기는 사용할 수 없습니다(소셜 로그인은 가능)
  	* 관리자 계정 : ID psAdmin PW psadmin
 	* 고객 계정 : 
-	
- **ERD : https://www.erdcloud.com/d/T967D3xb2NexTweXm**
- 
+
  **TRELLO : https://trello.com/b/Mk4LiwEP/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4**
  
  	* 프로젝트를 진행하면서 발생한 문제점과 해결법 등을 기록해놓은 곳
@@ -40,8 +38,6 @@
 	6 Google Cloud Platform의 가상머신을 이용한 실제 서버 
 	
 **4. Backend architecture**
-
-	ERD : https://www.erdcloud.com/d/T967D3xb2NexTweXm
 
 
 

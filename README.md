@@ -1,8 +1,10 @@
 # Portfolio-v2
 
  **데모 : http://www.petshopsjh910203.site/**
+ 
+ **ERD : https://www.erdcloud.com/d/T967D3xb2NexTweXm**
 
- **1. 프로젝트 요약(프로젝트의 목적이나 참여인원, 내가 맡은 부분 등)**
+ **1. 프로젝트 요약**
 
 	- 프로젝트 명  : PETSHOP 반려동물 쇼핑몰 구축
 	- 개 발 기 간  : 4/16 ~ 11/26(총 8개월)
@@ -20,7 +22,7 @@
 	- 웹 표준 기술  : HTML, CSS, JavaScript, jQuery
 	- 프레임워크   : Spring Framework
 
-**3. 주요기능(포트폴리오에서 강조하고 싶은 내용)**
+**3. 주요기능**
 
 	1 스프링 시큐리티를 이용한 회원 관리 기능
 	2 Oracle11g를 이용한 데이터 관리 기능

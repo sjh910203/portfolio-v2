@@ -2,25 +2,29 @@
 
  **데모 : http://www.petshopsjh910203.site/**
  
+ 	* 구글 보안 문제 때문에 이메일을 사용하는 일반 회원 가입, 비밀번호 찾기는 사용할 수 없습니다(소셜 로그인은 가능)
+ 	* 관리자 계정 : ID psAdmin PW psadmin
+	* 고객 계정 : 
+	
  **ERD : https://www.erdcloud.com/d/T967D3xb2NexTweXm**
 
  **1. 프로젝트 요약**
 
-	- 프로젝트 명  : PETSHOP 반려동물 쇼핑몰 구축
-	- 개 발 기 간  : 4/16 ~ 11/26
-	- 투 입 인 원  : 1명
-	- 프로젝트 소개: 스프링 프레임워크를 이용한 mvc 모델 온라인 쇼핑몰을 구축했습니다
+	- 프로젝트 명 : PETSHOP 반려동물 쇼핑몰 구축
+	- 개발기간 : 4/16 ~ 11/26
+	- 투입인원 : 1명
+	- 프로젝트 소개 : 스프링 프레임워크를 이용한 mvc 모델 온라인 쇼핑몰을 구축했습니다
 	- 개발목표 : 스프링 프레임워크, 스프링 시큐리티 등을 사용하여 실제 온라인 쇼핑몰과 같이 구축
 		
 
 **2. 개발환경**
 
-	- 사용(개발) 언어: JAVA
-	- 사용 O/S     : Window10
-	- 사용 D/B     : Oracle 11g xe
-	- 사용(개발)  툴: ECLIPSE, SQLDeveloper, Brackets
-	- 웹 표준 기술  : HTML, CSS, JavaScript, jQuery
-	- 프레임워크   : Spring Framework
+	- 사용(개발) 언어 : JAVA
+	- 사용 O/S : Window10
+	- 사용 D/B : Oracle 11g xe
+	- 사용(개발)  툴 : ECLIPSE, SQLDeveloper, Brackets
+	- 웹 표준 기술 : HTML, CSS, JavaScript, jQuery
+	- 프레임워크 : Spring Framework
 
 **3. 주요기능**
 
@@ -36,7 +40,7 @@
 	ERD : https://www.erdcloud.com/d/T967D3xb2NexTweXm
 
 
-* 구글 보안 문제 때문에 이메일을 사용하는 일반 회원 가입, 비밀번호 찾기는 사용할 수 없습니다.
+
 
 
 1. 프로젝트 기간

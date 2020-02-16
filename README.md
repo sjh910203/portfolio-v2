@@ -1,5 +1,7 @@
 # Portfolio-v2
 
+ ![pet_shop-logo 2](./image/pet_shop-logo 2.jpg)
+
  **데모 : http://www.petshopsjh910203.site/**
  
  	* 구글 보안 문제 때문에 이메일을 사용하는 일반 회원 가입, 비밀번호 찾기는 사용할 수 없습니다(소셜 로그인은 가능)

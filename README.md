@@ -7,6 +7,9 @@
 	* 고객 계정 : 
 	
  **ERD : https://www.erdcloud.com/d/T967D3xb2NexTweXm**
+ 
+ **https://trello.com/b/Mk4LiwEP/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4**
+ 	* 프로젝트를 진행하면서 발생한 문제점과 해결법 등을 기록해놓은 곳
 
  **1. 프로젝트 요약**
 

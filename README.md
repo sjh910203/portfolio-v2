@@ -1,6 +1,6 @@
 # Portfolio-v2
 
-![pet_shop-logo 2](./image/pet_shop-logo 2.jpg) 
+![petshoplogo2](./image/petshoplogo2.jpg) 
 
  **데모 : http://www.petshopsjh910203.site/**
  

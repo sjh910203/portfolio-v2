@@ -1,32 +1,40 @@
 # Portfolio-v2
 
+ **데모 : http://www.petshopsjh910203.site/**
+
  **1. 프로젝트 요약(프로젝트의 목적이나 참여인원, 내가 맡은 부분 등)**
 
 	- 프로젝트 명  : PETSHOP 반려동물 쇼핑몰 구축
 	- 개 발 기 간  : 4/16 ~ 11/26(총 8개월)
 	- 투 입 인 원  : 1명
-	- 프로젝트 소개: 스프링 프레임워크를 이용한 mvc 모델 쇼핑몰 사이트를 구축했습니다.
-	- 개발목표 : 스프링 프레임워크, 스프링 시큐리티 등을 사용하여 실제 서버
-		1 
-		2 DBMS를 이용한 회원정보 관리.
+	- 프로젝트 소개: 스프링 프레임워크를 이용한 mvc 모델 온라인 쇼핑몰을 구축했습니다
+	- 개발목표 : 스프링 프레임워크, 스프링 시큐리티 등을 사용하여 실제 온라인 쇼핑몰과 같이 구축
+		
 
 **2. 개발환경**
 
 	- 사용(개발) 언어: JAVA
 	- 사용 O/S     : Window10
-	- 사용 D/B     : 
-	- 사용(개발)  툴: ECLIPSE, Mysql Workbench, Brackets
+	- 사용 D/B     : Oracle 11g xe
+	- 사용(개발)  툴: ECLIPSE, SQLDeveloper, Brackets
 	- 웹 표준 기술  : HTML, CSS, JavaScript, jQuery
-	- 프레임워크   : Spring, MyBatis
+	- 프레임워크   : Spring Framework
 
 **3. 주요기능(포트폴리오에서 강조하고 싶은 내용)**
 
+	1 스프링 시큐리티를 이용한 회원 관리 기능
+	2 Oracle11g를 이용한 데이터 관리 기능
+	3 ajax를 이용한 화면 전환 없는 상품평 추가 기능
+	4 Google SMTP를 이용한 회원가입 인증 
+	5 OAuth 2.0을 이용한 소셜 로그인 
+	
 **4. Backend architecture**
 
+	ERD : https://www.erdcloud.com/d/T967D3xb2NexTweXm
 
-데모 : http://www.petshopsjh910203.site/
+
 * 구글 보안 문제 때문에 이메일을 사용하는 일반 회원 가입, 비밀번호 찾기는 사용할 수 없습니다.
-ERD : https://www.erdcloud.com/d/T967D3xb2NexTweXm
+
 
 1. 프로젝트 기간
 

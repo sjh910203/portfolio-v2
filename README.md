@@ -10,9 +10,6 @@
 	
 	* 고객 계정 : 
 
- **TRELLO : https://trello.com/b/Mk4LiwEP/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4**
- 
- 	* 프로젝트를 진행하면서 발생한 문제점과 해결법 등 잡다한 정보를 기록해놓은 곳
 
  **1. 프로젝트 요약**
 
@@ -43,13 +40,29 @@
 	
 	- 참고 서적 : 뇌를 자극하는 Java 프로그래밍, 코드로 배우는 스프링 웹 프로젝트
 
-**3. 주요기능**
+게시판 기능 설명 1
 
-	- 스프링 시큐리티를 이용한 회원 관리 기능
-	
-	- Oracle11g를 이용한 데이터 관리 기능
+Key summary
+
+포트폴리오에서 강조하고 싶은 내용들을 적습니다. 예를 들어 유닛테스트 Code coverage가 100%라면 적어도 됩니다. 
+
+Folder structure 소개
+
+Backend architecture
+
+Routes/Endpoints 소개
+
+Controller, Service, Repository, Store procedure 관계도
+
+DB 스키마
+
+**3. 주요기능**
 	
 	- ajax를 이용한 화면 전환 없는 상품평 추가 기능
+	
+	- Oracle11g를 이용한 데이터 관리 기능
+
+	- 스프링 시큐리티를 이용한 회원 관리 기능 
 	
 	- Google SMTP를 이용한 회원가입 인증 
 	

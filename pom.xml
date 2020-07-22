@@ -188,6 +188,19 @@
 			<version>3.8</version>
 		</dependency>
 		
+		<!-- Apahce Tika -->
+		<dependency>
+		    <groupId>org.apache.tika</groupId>
+		    <artifactId>tika-core</artifactId>
+		    <version>1.24.1</version>
+  		</dependency>
+  
+	    <dependency>
+	      <groupId>org.apache.tika</groupId>
+	      <artifactId>tika-parsers</artifactId>
+	      <version>1.24.1</version>
+	    </dependency>
+		
 		<!-- Mail -->
 		<dependency>
 			<groupId>org.springframework</groupId>

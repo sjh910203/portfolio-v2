@@ -154,7 +154,7 @@
 	
 	<update id="updateDate">
 		update member_info 
-		set updateDate = TO_DATE('#{updateDate}', 'MM-DD-YYYY')
+		set updateDate = sysdate
 		where memberNo = #{memberNo}
 	</update>
 	

@@ -169,12 +169,12 @@ public class MemberServiceImpl implements MemberService {
 		log.info("update Member Info");
 		
 		String password = pwencoder.encode(vo.getPassword());
-		Date date = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		String updateDate = sdf.format(date);
+		//Date date = new Date();
+		//SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		//String updateDate = sdf.format(date);
 		
 		vo.setPassword(password);
-		vo.setUpdateDate(updateDate);
+		//vo.setUpdateDate(updateDate);
 		mapper.updateDate(vo);
 		
 		return mapper.updateMemberInfo(vo); 

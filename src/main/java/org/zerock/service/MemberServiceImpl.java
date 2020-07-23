@@ -80,7 +80,7 @@ public class MemberServiceImpl implements MemberService {
 		sendMail.setText(new StringBuffer()
 				.append("<h1>" + vo.getEmail() + "(" + vo.getName() + ")님의 회원 인증을 위한 코드 발송입니다</h1>")
 				.append("<p>아래 링크를 클릭하시면 인증이 마무리 됩니다</p>")
-				.append("<a href='http://localhost:8080/member/joinConfirm?email=" 
+				.append("<a href='http://www.petshopsjh910203.site/member/joinConfirm?email=" 
 				+ vo.getEmail() + "&authKey=" + vo.getAuthKey()  
 				+ "' target='_blank'> 이메일 인증 확인 </a>").toString() );
 		sendMail.setFrom("sjh910203@gmail.com", "관리자");
@@ -207,7 +207,7 @@ public class MemberServiceImpl implements MemberService {
 		sendMail.setText(new StringBuffer()
 				.append("<h1>" + info.getEmail() + "님의 비밀번호 검색/변경 서비스입니다</h1>")
 				.append("<p>아래 링크를 클릭하시면  비밀번호 찾는 과정이 계속 됩니다</p>")
-				.append("<a href='http://localhost:8080/member/updatePW?memberNo=" 
+				.append("<a href='http://www.petshopsjh910203.site/member/updatePW?memberNo=" 
 						+ info.getMemberNo() + "&email=" + info.getEmail() + "&phoneNumber=" 
 						+ info.getPhoneNumber() + "&pwChangeFlag=" + pwChangeFlag.getPwChangeFlag() 
 						+ "' target='_blank'> 변 경 </a>").toString() );
